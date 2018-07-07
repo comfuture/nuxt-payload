@@ -8,8 +8,8 @@
 <script>
 export default {
   name: 'user-index',
-  asyncData ({app, route}) {
-    return app.$payload(route.fullPath)
+  asyncData ({app}) {
+    return app.$payload()
   }
 }
 </script>

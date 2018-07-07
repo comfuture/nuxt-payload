@@ -4,8 +4,8 @@
 <script>
 export default {
   name: 'user-id',
-  asyncData ({app, route}) {
-    return app.$payload(route.fullPath)
+  asyncData ({app}) {
+    return app.$payload()
   }
 }
 </script>

@@ -21,4 +21,7 @@ backend.get('/user/:id', (req, res, next) => {
   } catch(e) { }
 })
 
+// mount sub route
+backend.use('/test', require('./test'))
+
 module.exports = backend

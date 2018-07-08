@@ -31,11 +31,12 @@ const negotiator = (req, res, nuxt) => {
       res.setHeader('Expires', '0')
       res.json(data)
     } else {
-      // continue to nuxt
+      // XXX: url of sub mounted router points to parents router, so nuxt will try to render 1st depth router's url
+      req.url = req.originalUrl
       nuxt()
     }
   }).catch(error => {
-    res.json({})
+    nuxt(new Error("Errors occurs while resolving payload"))
   })
   // continue to next middleware stack
   nuxt()

@@ -19,10 +19,12 @@ api.get('/', (req, res, next) => {
   req.payload({users: USERS})
 })
 
-api.get('/:id', (req, res, next) => {
+api.get('/:id', (req, res, nuxt) => {
   let match = USERS.filter(user => user.id === req.params.id)
   if (match.length === 1) {
-    req.payload(match)
+    req.payload(match[0])
+  } else {
+    nuxt(new Error("No such user"))
   }
 })
 ```

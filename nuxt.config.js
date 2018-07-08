@@ -37,11 +37,7 @@ module.exports = {
     }
   },
   modules: [
-    ['~/modules/payload/index.js', {
-      entryPoints: [
-        ['/user', '~/user']
-      ]
-    }]
+    '~/modules/payload/index.js'
   ],
   serverMiddleware: [
     '~/server/backend.js'

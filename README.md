@@ -43,11 +43,7 @@ export default {
 </script>
 ```
 
-The only thing to do is to create a route function for connect that points to the same endpoint as the nuxt route.
-In SSR, the payload is simply passed via res object without any http overhead.
-In CSR, $payload method will automatically try to get payload by sending an http request to the same url as the route. The payload module automatically creates an endpoint that responds to the json version of the payload for the Accept request for `application/json`.
-
-This allows you to easily and quickly merge isomorphic backend code without the need for unnecessary server / client script branching by simply writing a single backend code.
+Realize an isomorphic backend with a single line of code! A route function for npm’s connect module which points to the same endpoint as the nuxt route is all that is needed. In SSR, the payload is simply passed via a response object without any http overhead. In CSR, $payload method will automatically send an http request to the same url as the route in order to get the payload. The payload module then creates an endpoint which responds to the json version of the payload with an Accept header of `application/json`.
 
 ## Build Setup
 

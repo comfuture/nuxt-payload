@@ -1,19 +1,21 @@
-const path = require('path')
+import path from "path";
 
-module.exports = async function payload(moduleOptions = null) {
+export default async function payload(moduleOptions = null) {
   // setup plugin
-  this.addPlugin(path.resolve(__dirname, 'plugin.js'))
+  this.addPlugin(path.resolve(__dirname, "plugin.js"));
 
   // setup serverMiddleware
-  let moduleFile = path.resolve(__dirname, 'server.js')
-  this.addServerMiddleware(moduleFile)
+  let moduleFile = path.resolve(__dirname, "server.js");
+  this.addServerMiddleware(moduleFile);
 
   // change stack order or this serverMiddleware to 1st
-  this.nuxt.hook('modules:done', moduleContainer => {
-    let container = moduleContainer.nuxt.options.serverMiddleware
-    let ix = container.indexOf(moduleFile)
+  this.nuxt.hook("modules:done", moduleContainer => {
+    let container = moduleContainer.nuxt.options.serverMiddleware;
+    let ix = container.indexOf(moduleFile);
     if (ix > -1) {
-      moduleContainer.nuxt.options.serverMiddleware.unshift(container.splice(ix, 1)[0])
+      moduleContainer.nuxt.options.serverMiddleware.unshift(
+        container.splice(ix, 1)[0]
+      );
     }
-  })
+  });
 }

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 
 export default (ctx, inject) => {
   const payload = function payload() {
@@ -9,5 +9,5 @@ export default (ctx, inject) => {
       return axios.get(route.fullPath).then(({ data }) => data);
     }
   };
-  inject("payload", payload);
+  inject('payload', payload);
 };

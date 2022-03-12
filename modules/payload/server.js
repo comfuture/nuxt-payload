@@ -1,4 +1,4 @@
-import accepts from "accepts";
+import accepts from 'accepts'
 
 export default (req, res, nuxt) => {
   res.status = code => {

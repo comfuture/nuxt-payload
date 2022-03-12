@@ -1,4 +1,6 @@
-const Router = require('router')
+import Router from 'router'
+import TestRouter from './test'
+
 const backend = new Router()
 
 backend.get('/user', (req, res, next) => {
@@ -15,13 +17,13 @@ backend.get('/user', (req, res, next) => {
 
 backend.get('/user/:id', (req, res, next) => {
   try {
-    let id = Number(req.params.id)
-    let name = ',maroo,paindo,hayeon,gyuhyun,dohyun'.split(',').splice(id, 1)[0]
+    const id = parseInt(req.params.id, 10)
+    const name = ',maroo,paindo,hayeon,gyuhyun,dohyun'.split(',').splice(id, 1)[0]
     res.payload({id, name})
   } catch(e) { }
 })
 
 // mount sub route
-backend.use('/test', require('./test'))
+backend.use('/test', TestRouter)
 
-module.exports = backend
+export default backend
